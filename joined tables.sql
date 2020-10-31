@@ -20,6 +20,8 @@ Left Join species On
 Left Join planets On
 	species.homeworld = planets.name
 	
+Order by 1
+	
 /* Where birth_year not like 'NA' */
 	
 	
