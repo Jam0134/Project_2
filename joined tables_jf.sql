@@ -6,12 +6,14 @@ charachters.homeworld As "Home Planet",
 charachters.species As "Species",
 species.classification As "Classification",
 species.language As "Language",
-planets.name As "Planet",
 planets.rotation_period As "Rotation Period",
 planets.orbital_period As "Orbital Period",
 planets.diameter As "Diameter",
-planets.terrain
-
+planets.terrain,
+CASE 
+WHEN planets.name = 'NA' THEN 'Unknown'
+ELSE planets.name
+END AS Planet
 
 FROM charachters
 
@@ -19,9 +21,11 @@ Left Join species On
 	charachters.homeworld = species.homeworld
 Left Join planets On
 	species.homeworld = planets.name
-	
+
+Where planets.name is not null
+
 Order by 1
 	
-/* Where birth_year not like 'NA' */
-	
+
+
 	
